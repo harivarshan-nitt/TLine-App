@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Long Line Model</title>
+    <link rel ="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{{ url_for('static',filename='js/longline.js') }}"></script>
+  </head>
+  <body style="background-color: #96D4D4;">
+    
+    {% extends "root.html" %}
+    {% block content %}
+    <div class="head">
+      <div class="headbutton" onclick="javascript:history.back();"> < BACK  </div>
+      <div class="headbutton" onclick="shortline()">SHORT</div>
+      <div class="headbutton" onclick="mediumline()">MEDIUM</div>
+      <div class="headbutton" onclick="longline()">LONG</div>
+      <div class="headbutton_inv"></div>
+      <div class="head_main">LONG LINE MODEL</div>
+    </div>
+    <div style="width: 100%;height: 80px;"></div>
+    <div class = "form">
+        <form action = "/longline" method="POST">
+            <div class="div_form">
+              <select name="sym" id="options">
+                <option value="Symmentrical">Symmentrical</option>
+                <option value="Unsymmmetrical">Unsymmmetrical</option>
+            </select>
+            </div><br><br><br><br>
+                    <div class="text">Spacing between conductors</div><br>
+                    <input type="text" name ="space"><br><br>
+                    <div class="text">No of sub-conductors</div><br>
+                    <input type="text" name ="n_sub_con"><br><br>
+                    <div class="text">Spacing between the sub-conductors </div><br>
+                    <input type="text" name ="sub_space"><br><br>
+                    <div class="text">No of strands</div><br>
+                    <input type="text" name ="n_strand"><br><br>
+                    <div class="text">Strand diameter</div><br>
+                    <input type="text" name ="strand_dm"><br><br>
+                    <div class="text">Length of diameter (km)</div><br>
+                    <input type="text" name ="len"><br><br>
+                    <div class="text">Resistance / km </div><br>
+                    <input type="text" name ="R"><br><br>
+                    <div class="text">Power Frequency</div><br>
+                    <input type="text" name ="f"><br><br>
+                    <div class="text">Nominal system voltage</div><br>
+                    <input type="text" name ="V"><br><br>
+                    <div class="text">Receiving end load (MW)</div><br>
+                    <input type="text" name ="L"><br><br>
+                    <div class="text">Power factor</div><br>
+                    <input type="text" name ="pf"><br><br><br>
+                    <input style ="display:none" name = "bool" value="false">
+                    <input type="submit" value="Submit" class ="button1">
+        </form>
+    </div>
+     
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>TLine-App</title>
+    <link rel ="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{{ url_for('static',filename='js/root.js') }}"></script>
+  </head>
+  <body style="background-color: black;">
+    <div class="navbar">
+      <div class="tline" onclick="root()">
+        TLine-App
+      </div>
+      <div class="navbutton" onclick="models()">
+        MODELS
+      </div>
+      <div class="navbutton" onclick="about()">
+        ABOUT
+      </div>
+      
+    </div>
+    <div style="width: 100%;height: 80px;"></div>
+    {% block content %}
+    
+    <div class="root_div">
+      TRANSMISSION LINES
+    </div>
+    
+    <div class="root_sub" >
+      <div>
+        <button class ="button2" onclick="models()">GET STARTED</button>
+      </div>
+    </div>
+    <div>
+      <img src="{{ url_for('static',filename='images/TLine.jpg') }}" alt="Avatar" style="width:100%;height: 100%;">
+    </div>
+    {% endblock %}
+    <div class="root_foot">  TLine - App @2022  </div>
+  </body>
+</html>

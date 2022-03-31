@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Short Line Model</title>
+    <link rel ="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{{ url_for('static',filename='js/shortline.js') }}"></script>
+  </head>
+  <body style="background-color: #96D4D4;">
+    
+    {% extends "root.html" %}
+    {% block content %}
+    <div class="head">
+      <div class="headbutton" onclick="javascript:history.back();"> < BACK  </div>
+      <div class="headbutton" onclick="shortline()">SHORT</div>
+      <div class="headbutton" onclick="mediumline()">MEDIUM</div>
+      <div class="headbutton" onclick="longline()">LONG</div>
+      <div class="headbutton_inv"></div>
+      <div class="head_main">SHORT LINE MODEL</div>
+    </div>
+    <div style="width: 100%;height: 80px;"></div>
+    <div class = "form">
+        <form action = "/shortline" method="POST">
+            <div class="div_form">
+              <select name="sym" id="options">
+                <option value="Symmentrical">Symmentrical</option>
+                <option value="Unsymmmentrical">Unsymmmetrical</option>
+              </select>
+            </div><br><br><br><br>
+                    <div id="sym" style="display: block;" class="text">Spacing between conductors<br></div>
+                    <input id="sym" type="text" name ="space">
+                    <div class="text" id="unsym" ><br>Spacing between conductor 1,2<br></div>
+                    <input id="unsym"  type="text" name ="space_12">
+                    <div class="text" id="unsym" ><br>Spacing between conductor 2,3<br></div>
+                    <input id="unsym" type="text" name ="space_23">
+                    <div id="unsym" class="text"><br>Spacing between conductor 3,1<br></div>
+                    <input id="unsym" type="text" name ="space_31">
+                    <div class="text"><br>No of sub-conductors<br></div>
+                    <input type="text" name ="n_sub_con">
+                    <div class="text"><br>Spacing between the sub-conductors<br> </div>
+                    <input type="text" name ="sub_space">
+                    <div class="text"><br>No of strands<br></div>
+                    <input type="text" name ="n_strand">
+                    <div class="text"><br>Strand diameter<br></div>
+                    <input type="text" name ="strand_dm">
+                    <div class="text"><br>Length of diameter (km)<br></div>
+                    <input type="text" name ="len">
+                    <div class="text"><br>Resistance / km <br></div>
+                    <input type="text" name ="R">
+                    <div class="text"><br>Power Frequency<br></div>
+                    <input type="text" name ="f">
+                    <div class="text"><br>Nominal system voltage<br></div>
+                    <input type="text" name ="V">
+                    <div class="text"><br>Receiving end load (MW)<br></div>
+                    <input type="text" name ="L">
+                    <div class="text"><br>Power factor<br></div>
+                    <input type="text" name ="pf">
+                    <input style ="display:none" name = "bool" value="false"><br><br><br>
+                    <input type="submit" value="Submit" class ="button1">
+        </form>
+    </div>
+     
+    {% endblock %}
+  </body>
+</html>

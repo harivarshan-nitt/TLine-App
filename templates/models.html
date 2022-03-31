@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>TLine-Models</title>
+    <link rel ="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{{ url_for('static',filename='js/models.js') }}"></script>
+  </head>
+  <body>
+    {% extends "root.html" %}    
+    {% block content %}
+    <div class="head">
+      <div class="headbutton" onclick="javascript:history.back();"> < BACK  </div>
+      <div class="headbutton" onclick="shortline()">SHORT</div>
+      <div class="headbutton" onclick="mediumline()">MEDIUM</div>
+      <div class="headbutton" onclick="longline()">LONG</div>
+      <div class="headbutton_inv"></div>
+     <div class="head_main">TRANSMISSION LINE MODELS</div>
+    </div>
+    <div style="width: 100%;height: 80px;"></div>
+    <div class="card_bar" style="background-color: #FFF4A3;">
+      <div class="card_text">
+        <br>
+        <h1>SHORT LINE MODEL</h1>
+      <br>
+      <p>LENGTH LESS THAN __ KM</p>
+      <br>
+      <button class="card_button" onclick="shortline()">Try It</button>
+      </div>
+      <div class="card_pic">
+      <img src="{{ url_for('static',filename='images/short.jpg') }}" alt="Avatar" style="width:100%">
+      </div>
+    </div>
+    <div class="card_bar" style="background-color: #96D4D4;">
+      <div class="card_text">
+        <br>
+        <h1>MEDIUM LINE MODEL</h1>
+      <br>
+      <p>LENGTH LESS THAN __ KM</p>
+      <br>
+      <button class="card_button" onclick="mediumline()">Try It</button>
+      </div>
+      <div class="card_pic">
+      <img src="{{ url_for('static',filename='images/medium.jpg') }}" alt="Avatar" style="width:100%">
+      </div>
+    </div>
+    <div class="card_bar" style="background-color: #FFC0C7;">
+      <div class="card_text">
+        <br>
+        <h1>LONG LINE MODEL</h1>
+      <br>
+      <p>LENGTH LESS THAN __ KM</p>
+      <br>
+      <button class="card_button" onclick="longline()">Try It</button>
+      </div>
+      <div class="card_pic">
+      <img src="{{ url_for('static',filename='images/long.jpg') }}" alt="Avatar" style="width:100%">
+      </div>
+    </div>
+    {% endblock %}
+    
+  </body>
+</html>
