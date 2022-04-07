@@ -128,8 +128,8 @@ body{
 }
 .card_pic{
     float: right;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 200px;
 }
 .head{
     width: 100%;
@@ -226,7 +226,6 @@ input{
     margin: 2px 2px 2px 2px;
     color: #282A35;
     text-align: center;
-    text-transform: uppercase;
     font-weight: bold;
 }
 label{
@@ -246,8 +245,8 @@ input {
 
 table{
     margin: auto;
-    margin-top: 150px;
-    width: 500px;
+    margin-top: 15px;
+    width: 1000px;
     height: auto;
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -257,14 +256,14 @@ table{
 table tr:nth-child(even){background-color: #f2f2f2;}
 table tr:nth-child(odd){background-color: white;}
 td{
-    height: 50px;
+    height: 70px;
     color: #282A35;
     text-align: center; 
 }
 td:hover {background-color: #ddd;}
 
 th{
-    height: 50px;
+    height: 70px;
     color: white;
     background-color: #04AA6D;
     text-align: center;
@@ -292,6 +291,34 @@ th{
     justify-content: center;
     color: white;
     background-color:#04AA6D;
+}
+.error_msg{
+    color: red;
+    height: 30px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.plot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 1000px;
+    width: 100%;
+}
+canvas{
+    background-color: white;
+    border: 5px solid #04AA6D;
+    border-radius: 5px;
+    
+}
+#canvasimg{
+    background-color: white;
+    border: 5px solid #04AA6D;
+    border-radius: 5px;
 }
 @media screen and (max-width: 1100px) {
     .form{

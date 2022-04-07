@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="{{ url_for('static',filename='js/longline.js') }}"></script>
   </head>
-  <body style="background-color: #96D4D4;">
+  <body onload="load()" style="background-color: #96D4D4;">
     
     {% extends "root.html" %}
     {% block content %}
@@ -23,34 +23,46 @@
     <div class = "form">
         <form action = "/longline" method="POST">
             <div class="div_form">
-              <select name="sym" id="options">
-                <option value="Symmentrical">Symmentrical</option>
-                <option value="Unsymmmetrical">Unsymmmetrical</option>
-            </select>
+              <select name="sym">
+                <option onclick="sym()" value="Symmentrical">Symmetrical</option>
+                <option onclick="unsym()"value="Unsymmmentrical">Unsymmmetrical</option>
+              </select>
             </div><br><br><br><br>
-                    <div class="text">Spacing between conductors</div><br>
-                    <input type="text" name ="space"><br><br>
-                    <div class="text">No of sub-conductors</div><br>
-                    <input type="text" name ="n_sub_con"><br><br>
-                    <div class="text">Spacing between the sub-conductors </div><br>
-                    <input type="text" name ="sub_space"><br><br>
-                    <div class="text">No of strands</div><br>
-                    <input type="text" name ="n_strand"><br><br>
-                    <div class="text">Strand diameter</div><br>
-                    <input type="text" name ="strand_dm"><br><br>
-                    <div class="text">Length of diameter (km)</div><br>
-                    <input type="text" name ="len"><br><br>
-                    <div class="text">Resistance / km </div><br>
-                    <input type="text" name ="R"><br><br>
-                    <div class="text">Power Frequency</div><br>
-                    <input type="text" name ="f"><br><br>
-                    <div class="text">Nominal system voltage</div><br>
-                    <input type="text" name ="V"><br><br>
-                    <div class="text">Receiving end load (MW)</div><br>
-                    <input type="text" name ="L"><br><br>
-                    <div class="text">Power factor</div><br>
-                    <input type="text" name ="pf"><br><br><br>
+                    <div id="sym1"  class="text">Spacing between conductors (m)<br></div>
+                    <div id="sym2"><input   type="text" name ="space"></div>
+
+                    <div class="text"  id="unsym1">Spacing between conductor R,Y (m)<br></div>
+                    <div id="unsym2"><input type="text" name ="space_12"><br></div>
+                    <div class="text" id="unsym3" ><br>Spacing between conductor Y,B (m)<br></div>
+                    <div id="unsym4"><input   type="text" name ="space_23"><br></div>
+                    <div id="unsym5" class="text"><br>Spacing between conductor B,R (m)<br></div>
+                    <div id="unsym6"><input  type="text" name ="space_31"><br></div>
+
+                    <div class="text"><br>No of sub-conductors<br></div>
+                    <input type="text" name ="n_sub_con">
+                    <div class="text"><br>Spacing between the sub-conductors (cm)<br> </div>
+                    <input type="text" name ="sub_space">
+                    <div class="text"><br>No of strands<br></div>
+                    <input type="text" name ="n_strand">
+                    <div class="text"><br>Strand diameter (mm)<br></div>
+                    <input type="text" name ="strand_dm">
+                    <div class="text"><br>Length of line (km)<br></div>
+                    <input type="text" name ="len">
+                    <div class="text"><br>Resistance per km <br></div>
+                    <input type="text" name ="R">
+                    <div class="text"><br>Power Frequency (Hz)<br></div>
+                    <input type="text" name ="f">
+                    <div class="text"><br>Nominal system voltage (kV)<br></div>
+                    <input type="text" name ="V">
+                    <div class="text"><br>Receiving end load (MW)<br></div>
+                    <input type="text" name ="L">
+                    <div class="text"><br>Power factor<br></div>
+                    <input type="text" name ="pf">
                     <input style ="display:none" name = "bool" value="false">
+                    <input style ="display:none" name = "model" value="long"><br><br><br>
+                    {% for error in errors %}
+          <div class="error_msg">PROVIDE VALID INPUT</div>
+          {% endfor %}   
                     <input type="submit" value="Submit" class ="button1">
         </form>
     </div>

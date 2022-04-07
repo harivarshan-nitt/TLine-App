@@ -1,6 +1,7 @@
 from flask import Flask , render_template, request
-from models import short_line,medium_line,long_line
+from models import compute
 from flask_weasyprint import HTML, render_pdf
+from form_validate import validate
 
 app = Flask(__name__) 
 
@@ -14,37 +15,54 @@ def models():
 
 @app.route("/shortline",methods = ['POST','GET'])
 def shortline():
+    errors = []
     if request.method=='GET':
-        return render_template("shortline.html")
+        return render_template("shortline.html",errors = errors)
     else:
-        output = short_line(request.form)
-        return render_template("result.html",output=output)
+        error_bool =  validate(request.form)      
+        if  error_bool== False:
+            output,plot= compute(request.form)
+            return render_template("result.html",output=output,plot=plot)
+        else:
+            errors.append("PROVIDE VALID INPUT")
+            return render_template("shortline.html",errors = errors)
+
         
 @app.route("/mediumline",methods = ['POST','GET'])
 def mediumline():
+    errors = []
     if request.method=='GET':
-        return render_template("mediumline.html")
+        return render_template("mediumline.html",errors = errors)
     else:
-        output = medium_line(request.form)
-        return render_template("result.html",output=output)
+        error_bool =  validate(request.form)      
+        if  error_bool== False:
+            output,plot= compute(request.form)
+            return render_template("result.html",output=output,plot=plot)
+        else:
+            errors.append("PROVIDE VALID INPUT")
+            return render_template("mediumline.html",errors = errors)
 
 @app.route("/longline",methods = ['POST','GET'])
 def longline():
+    errors = []
     if request.method=='GET':
-        return render_template("longline.html")
+        return render_template("longline.html",errors = errors)
     else:
-        output = long_line(request.form)
-        return render_template("result.html",output=output)
+        error_bool =  validate(request.form)      
+        if  error_bool== False:
+            output,plot= compute(request.form)
+            return render_template("result.html",output=output,plot=plot)
+        else:
+            errors.append("PROVIDE VALID INPUT")
+            return render_template("longline.html",errors = errors)
 
-    
 @app.route("/result",methods = ['POST'])
 def result():
     output = request.form
     html = render_template("result_pdf.html",output=output)
     return render_pdf(HTML(string=html))
-            
                 
 if __name__ == "__main__":
     #app.run(host='0.0.0.0',port=2000)
-    app.run(debug='true')
+    app.run()
 
